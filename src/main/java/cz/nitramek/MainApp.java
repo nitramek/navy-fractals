@@ -20,7 +20,7 @@ public class MainApp extends Application {
 
     public void start(Stage stage) throws Exception {
 
-        log.info("Starting Hello JavaFX and Maven demonstration application");
+        log.info("Fractals");
 
         String fxmlFile = "/fxml/hello.fxml";
         log.debug("Loading FXML for main view from: {}", fxmlFile);
@@ -32,7 +32,7 @@ public class MainApp extends Application {
         Scene scene = new Scene(rootNode, 400, 400);
         scene.getStylesheets().add("/styles/styles.css");
 
-        stage.setTitle("Hello JavaFX and Maven");
+        stage.setTitle("Fractals");
         stage.setScene(scene);
         stage.setMaximized(true);
         stage.show();
