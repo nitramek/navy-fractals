@@ -105,7 +105,11 @@ public class MainController implements Initializable {
         }
     }
 
-    public void draw(ActionEvent actionEvent) {
+    public void startIFSRandom(ActionEvent actionEvent) {
+        createCanvasWindow();
+    }
+
+    private void createCanvasWindow() {
         Stage stage = new Stage();
         stage.setTitle("Fractal");
         Canvas canvas = new Canvas(800, 600);
@@ -118,6 +122,18 @@ public class MainController implements Initializable {
         canvas.setTranslateY(canvas.getHeight());
         canvas.setScaleX(3);
         canvas.setScaleY(3);
+        stage.show();
+    }
+
+    public void startIFSDeterministic(){
+        Stage stage = new Stage();
+        stage.setTitle("Fractal");
+        Canvas canvas = new Canvas(800, 600);
+        Parent parent = new Pane(canvas);
+        stage.setScene(new Scene(parent, 800, 600));
+        int iterations = Integer.valueOf(iterationCount.getText());
+        IFSDeterministic ifsDeterministic = new IFSDeterministic(canvas.getGraphicsContext2D(), data.toArray(new TransformData[data.size()]), iterations);
+        ifsDeterministic.start();
         stage.show();
     }
 }

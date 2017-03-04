@@ -32,21 +32,11 @@ public class IFSRandom {
         drawPixel(x, y);
         for (int i = 0; i < iterations; i++) {
             TransformData transformData = pickData();
-            fillTransformation(transformMatrix, translation, transformData);
+            transformData.fillTransformation(transformMatrix, translation);
             point = loop(point, transformMatrix, translation);
         }
         gc.restore();
     }
-
-    private void fillTransformation(Matrix transformMatrix, Vector translation, TransformData transformData) {
-        transformMatrix.set(0, 0, transformData.getA());
-        transformMatrix.set(0, 1, transformData.getB());
-        transformMatrix.set(1, 0, transformData.getC());
-        transformMatrix.set(1, 1, transformData.getD());
-        translation.set(0, transformData.getE());
-        translation.set(1, transformData.getF());
-    }
-
     private void drawPixel(int x, int y) {
         gc.getPixelWriter().setColor(x, y, fractalColor);
     }

@@ -17,5 +17,6 @@
                text="import.fractals"/>
     <TextField layoutX="80.0" layoutY="17.0" fx:id="iterationCount">
     </TextField>
-    <Button layoutX="230.0" layoutY="17.0" mnemonicParsing="false" onAction="#draw" text="Draw"/>
+    <Button layoutX="230.0" layoutY="17.0" mnemonicParsing="false" onAction="#startIFSRandom" text="Stochastic IFS"/>
+    <Button layoutX="330.0" layoutY="17.0" mnemonicParsing="false" onAction="#startIFSDeterministic" text="Deterministic IFS"/>
 </Pane>
