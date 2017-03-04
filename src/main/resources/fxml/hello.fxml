@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.Pane?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.112"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.nitramek.MainController">
+    <TableView fx:id="table" editable="true" layoutX="6.0" layoutY="42.0" maxHeight="-Infinity"
+               maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+               prefHeight="384.0" prefWidth="848.0" tableMenuButtonVisible="true">
+    </TableView>
+    <Button layoutX="6.0" layoutY="17.0" mnemonicParsing="false" onAction="#addRow"
+            text="Add row"/>
+    <Button layoutX="11.0" layoutY="426.0" mnemonicParsing="false" onAction="#importData"
+            text="Import"/>
+    <TextField fx:id="importPath" layoutX="63.0" layoutY="426.0" promptText="placeholder"
+               text="import.fractals"/>
+    <TextField layoutX="80.0" layoutY="17.0" fx:id="iterationCount">
+    </TextField>
+    <Button layoutX="230.0" layoutY="17.0" mnemonicParsing="false" onAction="#draw" text="Draw"/>
+</Pane>
