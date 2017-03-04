@@ -19,4 +19,5 @@
     </TextField>
     <Button layoutX="230.0" layoutY="17.0" mnemonicParsing="false" onAction="#startIFSRandom" text="Stochastic IFS"/>
     <Button layoutX="330.0" layoutY="17.0" mnemonicParsing="false" onAction="#startIFSDeterministic" text="Deterministic IFS"/>
+    <Button layoutX="440.0" layoutY="17.0" mnemonicParsing="false" onAction="#startChaosGame" text="Chaos game"/>
 </Pane>

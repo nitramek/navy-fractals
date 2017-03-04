@@ -106,30 +106,39 @@ public class MainController implements Initializable {
     }
 
     public void startIFSRandom(ActionEvent actionEvent) {
-        createCanvasWindow();
-    }
+        Stage stage1 = new Stage();
+        stage1.setTitle("IFS stochastic");
+        Canvas canvas1 = new Canvas(800, 600);
+        Parent parent1 = new Pane(canvas1);
+        stage1.setScene(new Scene(parent1, 800, 600));
+        int iterations1 = Integer.valueOf(iterationCount.getText());
+        IFSRandom ifsRandom = new IFSRandom(canvas1.getGraphicsContext2D(), data.toArray(new TransformData[data.size()]), iterations1);
 
-    private void createCanvasWindow() {
-        Stage stage = new Stage();
-        stage.setTitle("Fractal");
-        Canvas canvas = new Canvas(800, 600);
-        Parent parent = new Pane(canvas);
-        stage.setScene(new Scene(parent, 800, 600));
-        int iterations = Integer.valueOf(iterationCount.getText());
-        IFSRandom ifsRandom = new IFSRandom(canvas.getGraphicsContext2D(), data.toArray(new TransformData[data.size()]), iterations);
         ifsRandom.start();
-        stage.show();
+        stage1.show();
     }
 
     public void startIFSDeterministic(){
         Stage stage = new Stage();
-        stage.setTitle("Fractal");
+        stage.setTitle("IFS deterministic");
         Canvas canvas = new Canvas(800, 600);
         Parent parent = new Pane(canvas);
         stage.setScene(new Scene(parent, 800, 600));
         int iterations = Integer.valueOf(iterationCount.getText());
         IFSDeterministic ifsDeterministic = new IFSDeterministic(canvas.getGraphicsContext2D(), data.toArray(new TransformData[data.size()]), iterations);
         ifsDeterministic.start();
+        stage.show();
+    }
+
+    public void startChaosGame(ActionEvent actionEvent) {
+        Stage stage = new Stage();
+        stage.setTitle("Fractal");
+        Canvas canvas = new Canvas(800, 600);
+        Parent parent = new Pane(canvas);
+        stage.setScene(new Scene(parent, 800, 600));
+        int iterations = Integer.valueOf(iterationCount.getText());
+        ChaosGame cg = new ChaosGame(canvas.getGraphicsContext2D(), iterations);
+        cg.start();
         stage.show();
     }
 }
