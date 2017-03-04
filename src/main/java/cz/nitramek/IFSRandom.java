@@ -8,8 +8,11 @@ import org.la4j.vector.dense.BasicVector;
 
 import java.util.Random;
 
+import javafx.geometry.Point3D;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.transform.Affine;
 import lombok.Data;
 
 @Data
@@ -36,12 +39,19 @@ public class IFSRandom {
             point = loop(point, transformMatrix, translation);
         }
         gc.restore();
+        Canvas canvas = gc.getCanvas();
+        Affine transform = new Affine();
+        transform.appendRotation(180, new Point3D(gc.getCanvas().getWidth() / 2, gc.getCanvas().getHeight() / 2,0), new Point3D(0,0,1));
+        transform.appendRotation(180, new Point3D(gc.getCanvas().getWidth() / 2, gc.getCanvas().getHeight() / 2,0), new Point3D(0,1,0));
+        gc.getCanvas().getTransforms().add(transform);
     }
     private void drawPixel(int x, int y) {
         gc.getPixelWriter().setColor(x, y, fractalColor);
     }
 
     private Vector loop(Vector pointBefore, Matrix transformMatrix, Vector translation) {
+        translation.set(0, translation.get(0) * gc.getCanvas().getWidth());
+        translation.set(1, translation.get(1) * gc.getCanvas().getHeight());
         Vector newPoint = transformMatrix.multiply(pointBefore).add(translation);
         drawPixel(newPoint.get(0), newPoint.get(1));
         return newPoint;

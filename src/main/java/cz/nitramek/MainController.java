@@ -118,10 +118,6 @@ public class MainController implements Initializable {
         int iterations = Integer.valueOf(iterationCount.getText());
         IFSRandom ifsRandom = new IFSRandom(canvas.getGraphicsContext2D(), data.toArray(new TransformData[data.size()]), iterations);
         ifsRandom.start();
-        canvas.setTranslateX(canvas.getWidth());
-        canvas.setTranslateY(canvas.getHeight());
-        canvas.setScaleX(3);
-        canvas.setScaleY(3);
         stage.show();
     }
 
