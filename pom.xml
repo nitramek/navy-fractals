@@ -33,7 +33,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>8.1.5</version>
                 <configuration>
-                    <mainClass>cz.nitramek.MainApp</mainClass>
+                    <mainClass>cz.nitramek.fractals01.MainApp</mainClass>
                 </configuration>
                 <executions>
                     <execution>

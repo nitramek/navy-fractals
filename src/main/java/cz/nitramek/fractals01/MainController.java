@@ -1,4 +1,4 @@
-package cz.nitramek;
+package cz.nitramek.fractals01;
 
 import java.io.File;
 import java.io.IOException;
@@ -140,6 +140,12 @@ public class MainController implements Initializable {
         ChaosGame cg = new ChaosGame(canvas.getGraphicsContext2D(), iterations);
         cg.start();
         stage.show();
+    }
+
+    public void startMandelbrot(ActionEvent actionEvent) {
+        Mandelbrot mandelbrot = new Mandelbrot();
+        mandelbrot.draw();
+
     }
 }
 

@@ -1,4 +1,4 @@
-package cz.nitramek;
+package cz.nitramek.fractals01;
 
 
 import org.la4j.Matrix;
