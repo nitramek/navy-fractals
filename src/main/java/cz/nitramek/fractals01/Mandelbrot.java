@@ -25,11 +25,9 @@ public class Mandelbrot {
 
     public static final int SIZE = 800;
     public static final double SCALE = 4.0 / SIZE; //scale na pravy roh 4,4,
-    private final static int interations = 5000;
+    private final static int iterations = 1000;
     private final Canvas canvas;
     private final Stage stage;
-    private final Color outColor = Color.rgb(255, 0, 0);
-    private final Color inColor = Color.rgb(0, 0, 0);
     private Point2D translation = new Point2D(0, 0);
     private Point2D scale = new Point2D(1, 1);
 
@@ -99,20 +97,23 @@ public class Mandelbrot {
 
 
     public void draw() {
-        double fallOffMatrix[] = new double[(SIZE + 1) * (SIZE + 1)];
+        int[] fallOffMatrix = new int[(SIZE + 1) * (SIZE + 1)];
 
         IntStream.rangeClosed(0, SIZE)
                 .forEach(x -> IntStream.rangeClosed(0, SIZE).parallel().forEach(y -> {
                     Point2D converted = convertCoords(new Point2D(x, y));
                     int fallOff = fallOff(converted);
-                    int normalizedFallof = (int) (fallOff * (1.0 / interations));
-
-                    fallOffMatrix[x * (SIZE + 1) + y] = normalizedFallof;
+                    fallOffMatrix[x * (SIZE + 1) + y] = fallOff;
                 }));
         for (int i = 0; i <= SIZE; i++) {
             for (int j = 0; j <= SIZE; j++) {
-                Color mixed = inColor.interpolate(outColor, fallOffMatrix[i * (SIZE + 1) + j]);
-                canvas.getGraphicsContext2D().getPixelWriter().setColor(i, j, mixed);
+                int falloff = fallOffMatrix[i * (SIZE + 1) + j];
+                Color color = Color.hsb(falloff / 256f, 1, falloff / (falloff + 8f));
+                if(falloff < iterations){
+                    canvas.getGraphicsContext2D().getPixelWriter().setColor(i, j, color);
+                }else {
+                    canvas.getGraphicsContext2D().getPixelWriter().setColor(i, j,  Color.BLACK);
+                }
             }
         }
         stage.show();
@@ -124,13 +125,13 @@ public class Mandelbrot {
         double c_re = point.getX();
         double c_im = point.getY();
         double x = 0, y = 0;
-        while (x * x + y * y < 4 && i < interations) {
+        while (x * x + y * y < 4 && i < iterations) {
             double x_new = x * x - y * y + c_re;
             y = 2 * x * y + c_im;
             x = x_new;
             i++;
         }
-        return interations - (interations - i);
+        return i;
     }
 
     public Point2D convertCoords(Point2D orig) {
