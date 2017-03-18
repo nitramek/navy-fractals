@@ -36,6 +36,10 @@
             <TextField fx:id="iterationsField" text="1100" GridPane.columnIndex="0" GridPane.rowIndex="3" />
             <TextField fx:id="drawFromIterationsField" text="1000" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 
+            <Label text="Intervals count" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+            <TextField fx:id="intervalsField" text="10" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Button onAction="#showHistogram" text="Show histogram" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+
             <Button onAction="#drawRefurbication" text="Draw bifurcation" />
         </GridPane>
     </AnchorPane>
