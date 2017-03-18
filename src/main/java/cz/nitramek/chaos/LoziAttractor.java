@@ -1,4 +1,4 @@
-package cz.nitramek.fractals01;
+package cz.nitramek.chaos;
 
 
 import java.lang.reflect.Field;

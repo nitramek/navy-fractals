@@ -1,4 +1,4 @@
-package cz.nitramek.fractals01;
+package cz.nitramek.chaos;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

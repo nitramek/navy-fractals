@@ -1,4 +1,4 @@
-package cz.nitramek.fractals01;
+package cz.nitramek.chaos;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

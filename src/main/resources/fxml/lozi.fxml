@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <SplitPane dividerPositions="0.2" orientation="VERTICAL" prefHeight="640.0" prefWidth="800.0"
            xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="cz.nitramek.fractals01.LoziAttractor">
+           fx:controller="cz.nitramek.chaos.LoziAttractor">
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
         <GridPane prefWidth="800">
             <columnConstraints>
