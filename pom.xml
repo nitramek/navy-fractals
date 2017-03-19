@@ -4,8 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cz.nitramek</groupId>
-    <artifactId>Chaos</artifactId>
-    <name>Chaos</name>
+    <artifactId>game-of-life</artifactId>
+    <name>game-of-life</name>
 
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
@@ -24,7 +24,7 @@
 
     <build>
 
-        <finalName>Chaos</finalName>
+        <finalName>game-of-life</finalName>
 
         <plugins>
 
@@ -33,7 +33,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>8.1.5</version>
                 <configuration>
-                    <mainClass>cz.nitramek.chaos.MainApp</mainClass>
+                    <mainClass>cz.nitramek.gameoflife.MainApp</mainClass>
                 </configuration>
                 <executions>
                     <execution>
