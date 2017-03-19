@@ -2,6 +2,7 @@ package cz.nitramek.gameoflife;
 
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -16,6 +17,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import lombok.extern.log4j.Log4j;
 
@@ -81,7 +83,14 @@ public class MainApp extends Application {
     }
 
     private void load() {
-        Path path = Paths.get("saved.gol");
+        Stage ownerWindow = new Stage();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open game of life save");
+        fileChooser.setInitialDirectory(Paths.get("").toAbsolutePath().toFile());
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Game of life file", "*.gol"));
+
+        File file = fileChooser.showOpenDialog(ownerWindow);
+        Path path = Paths.get(file.toURI());
         try {
             int[] savedState = Files.lines(path)
                     .flatMapToInt(line -> line.chars().map(ch -> ch - '0'))
